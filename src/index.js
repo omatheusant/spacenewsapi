@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const app = express();
 app.use(express.json())
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const New = mongoose.model('New', {
     title: String,
@@ -45,7 +45,7 @@ app.post("/", async (req, res) => {
     return res.send(news)
 })
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
     mongoose.connect('mongodb+srv://matalvessantana:JeqdiiUv7JJQrfYh@spacenewsapi.6ubmmbv.mongodb.net/?retryWrites=true&w=majority')
 
     console.log('app is running')
